@@ -137,7 +137,7 @@ setup(
              'PyInstaller to build and distribute non-free programs '
              '(including commercial ones)'),
     url='http://www.pyinstaller.org',
-    download_url='https://sourceforge.net/projects/pyinstaller/files',
+    download_url='https://github.com/TheSomeMan/pyinstaller/archive/v2.1_patch_run_from_non_ascii_path.zip',
 
     classifiers=CLASSIFIERS,
     zip_safe=False,
