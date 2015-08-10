@@ -133,7 +133,12 @@ class FrozenImporter(object):
         for pyz_filepath in sys.path:
             try:
                 # Unzip zip archive bundled with the executable.
-                self._pyz_archive = ZlibArchive(unicode(pyz_filepath, "utf-8"))
+                if sys.getfilesystemencoding() == 'mbcs':
+                    # On Windows NT+, file names are Unicode natively
+                    pyz_filepath_encoded = unicode(pyz_filepath, 'utf-8')
+                else:
+                    pyz_filepath_encoded = pyz_filepath
+                self._pyz_archive = ZlibArchive(pyz_filepath_encoded)
                 # Verify the integrity of the zip archive with Python modules.
                 self._pyz_archive.checkmagic()
                 # End this method since no Exception was raised we can assume
